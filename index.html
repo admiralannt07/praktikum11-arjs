@@ -54,6 +54,8 @@
     <script>
         const marker = document.querySelector('a-marker');
         const soundEntity = document.querySelector('a-sound');
+        const browserModel = document.getElementById('kupu-kupu');
+        const browserModel1 = document.getElementById('dasar');
 
         marker.addEventListener('markerFound', () => {
             console.log('Marker found! Playing music.');
@@ -64,6 +66,18 @@
             console.log('Marker lost! Stopping music.');
             soundEntity.components.sound.stopSound();
         });
+
+        // Calculate scale based on marker dimensions
+        const markerWidth = marker.getAttribute('width');
+        const markerHeight = marker.getAttribute('height');
+        
+        // Adjust model scale proportionally to marker size while maintaining aspect ratio
+        const modelAspectRatio = browserModel.object3D.boundingBox.max.x / browserModel.object3D.boundingBox.max.y;
+        const modelAspectRatio1 = browserModel1.object3D.boundingBox.max.x / browserModel1.object3D.boundingBox.max.y;
+        const scaleX = markerWidth / modelAspectRatio;
+        const scaleY = markerHeight;  
+        browserModel.setAttribute('scale', { x: scaleX, y: scaleY, z: scaleX });
+
     </script> 
 </body>
 </html>
