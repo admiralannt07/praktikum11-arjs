@@ -25,7 +25,9 @@
         <a-marker preset="custom" type="pattern" url="./assets/markerpat.patt">
             <a-entity
                 id="dasar"
-                position="0 0 0.1" scale="15 15 15" gltf-model="#bunga"
+                position="0 0 0.1" scale="15 15 15" animation-mixer="loop: repeat"
+                gltf-model="#bunga"
+                gesture-handler
                 animation="property: rotation; 
                            to: 0 360 0; 
                            dur: 8500; 
